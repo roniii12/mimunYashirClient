@@ -10,13 +10,13 @@
         </mat-list-item>
     </mat-list>
 
-<div class="flex flex-col items-center w-full h-full ">
+<div class="flex flex-col items-center">
     <form [formGroup]="loginForm" class="flex flex-col gap-2" (ngSubmit)="onSubmit()">
         <span class="errorMessage" *ngIf="authService.errorChange | async">{{'IdNoFound' | translate}}</span>
         <mat-form-field appearance="standard">
             <mat-label>{{'enterId' | translate}}</mat-label>
             <input matInput formControlName="id">
-            <mat-error>{{'invalidId' | translate}}</mat-error>
+            <mat-error *ngIf="loginForm?.get('id')?.hasError('invalidId')">{{'invalidId' | translate}}</mat-error>
         </mat-form-field>
         <button mat-raised-button color="primary" type="submit"
         [disabled]="!loginForm?.valid">{{'signIn' | translate}}</button>

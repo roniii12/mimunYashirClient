@@ -6,7 +6,6 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CostomerDetailsComponent } from './components/costomer-details/costomer-details.component';
 import { HeaderComponent } from './components/header/header.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { AuthModule } from './components/auth/auth.module';
@@ -29,7 +28,6 @@ export function rootLoaderFactory(http: HttpClient){
 @NgModule({
   declarations: [
     AppComponent,
-    CostomerDetailsComponent,
     HeaderComponent,
   ],
   imports: [

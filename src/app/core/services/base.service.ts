@@ -100,7 +100,7 @@ export abstract class BaseService {
       }
       return error;
   }
- 
+
   protected generalErrorMessage(errorMsg:string){
       let errMsg=null;
       switch(errorMsg){

@@ -60,10 +60,11 @@ export class AuthComponent extends BaseComponent implements OnInit, OnDestroy {
   }
   private validateId(ctrl:AbstractControl){
     let id = ctrl.value?.trim?.();
+    if(!id) return null;
     const err = {invalidId: true};
     if (id?.length > 9 || id?.length < 5 || isNaN(id)) return err;
   	id = id.length < 9 ? ("00000000" + id).slice(-9) : id;
-    const isValid = Array.from(id, Number).reduce((counter, digit, i) => { 
+    const isValid = Array.from(id, Number).reduce((counter, digit, i) => {
       const step = digit * ((i % 2) + 1);
       return counter + (step > 9 ? step - 9 : step);
     }) % 10 === 0;

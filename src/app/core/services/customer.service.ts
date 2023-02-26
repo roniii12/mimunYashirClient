@@ -31,13 +31,13 @@ export class CustomerService extends BaseService {
     }, 10);
     return of(errMsg);
   }
-    
+
     getCustomerDetails(){
       this.isLoadingChange.next(true);
       return this.get<CustomerModel | null>('CustomerDetails').pipe(
         tap(customerDetails => this.customerDetailsChange.next(customerDetails)),
         tap(()=>this.isLoadingChange.next(false)),
-        catchError(error => this.generalErrorMessage(error))
+        catchError(error => this.handleErrorCustomer(error))
       );
     }
 
@@ -46,7 +46,7 @@ export class CustomerService extends BaseService {
       return this.post<UpdateAddressModel | null>('UpdateCustomerAddress',
       address).pipe(
         switchMap(() => this.getCustomerDetails()),
-        catchError(error => this.generalErrorMessage(error))
+        catchError(error => this.handleErrorCustomer(error))
       );
     }
 }

@@ -23,14 +23,14 @@ export class PackageItemComponent implements OnInit {
         height: '150px',
         width: '150px',
         type: "radialBar"
-      },      
+      },
       plotOptions: {
         radialBar: {
           hollow: {
             margin: 15,
             size: "70%"
           },
-         
+
           dataLabels: {
             show: true,
             name: {
@@ -46,12 +46,12 @@ export class PackageItemComponent implements OnInit {
               show: true,
               formatter: function (val) {
                 return val + '%'
-              }    
+              }
             }
           }
         }
       },
-    
+
       stroke: {
         lineCap: "round",
       },
@@ -72,7 +72,7 @@ export class PackageItemComponent implements OnInit {
   getApexChartForPackage(pack: PackageModel){
     return{
       ...this.apexOption,
-      series:[pack.usage/pack.usage],
+      series:[( pack.usage / pack.quantity) * 100],
       plotOptions:{
         ...this.apexOption.plotOptions,
         radialBar:{
@@ -83,7 +83,7 @@ export class PackageItemComponent implements OnInit {
               ...this.apexOption.plotOptions?.radialBar?.dataLabels?.value,
               formatter: function (val) {
                 return `${pack.usage}/${pack.quantity}`
-              }    
+              }
             }
           }
         }

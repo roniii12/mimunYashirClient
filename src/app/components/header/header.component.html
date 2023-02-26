@@ -3,9 +3,11 @@
         <div class="flex flex-row items-center justify-between toolbar-header w-full h-full">
             <h2 class="logo text-primary" color="primary">{{'logo'| translate}}</h2>
             <div class="flex flex-row gap-2">
+              <ng-container *ngIf="(authService.userSelectedChange | async)">
                 <span class="text-primary menuItem" (click)="onChangeCustomer()">{{'changeUser' | translate}}</span>
                 <span>|</span>
-                <span class="text-primary menuItem changeLang" (click)="onChangeLang()">{{ (translateService.onLangChange | async)?.lang === 'he' ? 'English' : 'עברית'}}</span>
+              </ng-container>
+              <span class="text-primary menuItem changeLang" (click)="onChangeLang()">{{ (translateService.onLangChange | async)?.lang === 'he' ? 'English' : 'עברית'}}</span>
             </div>
         </div>
     </mat-toolbar-row>

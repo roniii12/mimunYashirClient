@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContractItemComponent } from './contract-item/contract-item.component';
 import { PackagesListComponent } from './packages-list/packages-list.component';
 import { PackageItemComponent } from './packages-list/package-item/package-item.component';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -15,7 +14,6 @@ import {TranslateModule} from '@ngx-translate/core'
 @NgModule({
   declarations: [
     ContractsComponent,
-    ContractItemComponent,
     PackagesListComponent,
     PackageItemComponent,
   ],

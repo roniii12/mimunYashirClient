@@ -34,7 +34,7 @@ export class AuthInterceptor implements HttpInterceptor {
     req = req.clone({ headers: req.headers.set('Accept', 'application/json') });
 
     return next.handle(req).pipe(catchError(event => {
-      if (event instanceof HttpErrorResponse) {
+      if (event instanceof HttpErrorResponse && [0, 400].indexOf(+event.status) > -1) {
         this.authService.logOut();
       }
       throw event;

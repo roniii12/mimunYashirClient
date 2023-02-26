@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BaseComponent } from 'src/app/core/cummon/base.component';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { CustomerService } from 'src/app/core/services/customer.service';
-import {takeUntil} from "rxjs/operators";
-import { FormGroup, Validators, FormControl, AbstractControl, } from '@angular/forms'
+import { takeUntil } from "rxjs/operators";
+import { FormGroup, FormControl } from '@angular/forms'
 import { CustomerModel } from 'src/app/core/models/customer.model';
 import { UpdateAddressModel } from 'src/app/core/models/update-address.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -22,8 +22,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
     public authService: AuthService,
     public customerService: CustomerService,
     private snackBar: MatSnackBar,
-    private cd: ChangeDetectorRef
-  ) { 
+  ) {
     super();
   }
 
@@ -45,7 +44,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         });
         this.message = "";
       }
-    })
+    });
     this.customerService.customerDetailsChange.pipe(takeUntil(this.destroyed$)).subscribe(customerDetails => {
       this.customerDetails = customerDetails;
       this.initForm();
