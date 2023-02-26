@@ -1,0 +1,32 @@
+.logo{
+    text-shadow: 1px 1px 2px darkgray;
+}
+.menuItem{
+    font-size: 1rem;
+    cursor: pointer;
+    // text-decoration: underline;
+    font-weight: 600;
+}
+.toolbar-header{
+    padding: 1rem .5rem;
+    border-bottom: 1px solid #bbbb;
+}
+.mat-toolbar{
+    background-color: #fff;
+    box-shadow: 1px 1px 3px darkgray;
+}
+.customer-header{
+    font-size: 1rem;
+    flex-direction: column;
+    height: unset;
+    padding: .5rem 0;
+    &, form{
+        gap: .75rem;
+        ::ng-deep .mat-form-field-wrapper{
+            padding-bottom: 0;
+            .mat-form-field-underline{
+                bottom: 0;
+            }
+        }
+    }
+}

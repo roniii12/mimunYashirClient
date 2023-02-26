@@ -1,0 +1,47 @@
+<mat-toolbar >
+    <mat-toolbar-row>
+        <div class="flex flex-row items-center justify-between toolbar-header w-full h-full">
+            <h2 class="logo text-primary" color="primary">{{'logo'| translate}}</h2>
+            <div class="flex flex-row gap-2">
+                <span class="text-primary menuItem" (click)="onChangeCustomer()">{{'changeUser' | translate}}</span>
+                <span>|</span>
+                <span class="text-primary menuItem changeLang" (click)="onChangeLang()">{{ (translateService.onLangChange | async)?.lang === 'he' ? 'English' : 'עברית'}}</span>
+            </div>
+        </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="(authService.userSelectedChange | async) && (customerService.customerDetailsChange | async)" class="customer-header">
+        <ng-container
+        [ngTemplateOutlet]="customerDetailsTemp"
+        [ngTemplateOutletContext]="{details: customerService.customerDetailsChange | async}">
+        </ng-container>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<ng-template #customerDetailsTemp let-details="details">
+    <app-name-value
+        [name]="'customerName' | translate"
+        [value]="details?.firstName + ' ' + details.lastName"></app-name-value>
+    <form class="flex flex-row items-center justify-center" [formGroup]="addressForm!" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="legacy">
+            <mat-label>{{'city' | translate}}</mat-label>
+            <input matInput formControlName="city">
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+            <mat-label>{{'street' | translate}}</mat-label>
+            <input matInput formControlName="street">
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+            <mat-label>{{'apartment' | translate}}</mat-label>
+            <input matInput formControlName="apartment">
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+            <mat-label>{{'zip' | translate}}</mat-label>
+            <input matInput formControlName="zip">
+        </mat-form-field>
+        <button mat-raised-button type="submit" color="primary">{{'update' | translate}}</button>
+    </form>
+
+</ng-template>
+
+<app-loading-dialog *ngIf="isLoading"></app-loading-dialog>
+

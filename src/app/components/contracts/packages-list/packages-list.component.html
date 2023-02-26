@@ -1,0 +1,5 @@
+<mat-list>
+    <mat-list-item class="list-item" role="packageItem" *ngFor="let package of packages">
+        <app-package-item [package]="package"></app-package-item>
+    </mat-list-item>
+</mat-list>

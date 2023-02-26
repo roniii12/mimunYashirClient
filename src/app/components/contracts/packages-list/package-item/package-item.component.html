@@ -1,0 +1,16 @@
+<div class="w-full h-full flex flex-row gap-2 items-center justify-between">
+    <span>{{package.name}}</span>
+    <span>{{getStrType(package.packageType)}}</span>
+    <ng-container
+    [ngTemplateOutlet]="apexChartTemp"
+    [ngTemplateOutletContext]="{apexOption:getApexChartForPackage(package)}">
+    </ng-container>
+</div>
+
+<ng-template #apexChartTemp let-apexOption="apexOption">
+    <apx-chart [chart]="$any(apexOption.chart)"
+    [series]="$any(apexOption.series)"
+    [plotOptions]="$any(apexOption.plotOptions)"
+    [stroke]="$any(apexOption.stroke)"
+    [labels]="$any(apexOption.labels)" ></apx-chart>
+</ng-template>

@@ -1,0 +1,26 @@
+
+    <mat-list role="userList">
+        <mat-list-item role="userItem" *ngFor="let user of users">
+            <div class="card" matRipple (click)="onLogin(user)">
+                <app-name-value
+                [name]="'customer' | translate"
+                [value]="user.id"
+                ></app-name-value>
+            </div>
+        </mat-list-item>
+    </mat-list>
+
+<div class="flex flex-col items-center w-full h-full ">
+    <form [formGroup]="loginForm" class="flex flex-col gap-2" (ngSubmit)="onSubmit()">
+        <span class="errorMessage" *ngIf="authService.errorChange | async">{{'IdNoFound' | translate}}</span>
+        <mat-form-field appearance="standard">
+            <mat-label>{{'enterId' | translate}}</mat-label>
+            <input matInput formControlName="id">
+            <mat-error>{{'invalidId' | translate}}</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit"
+        [disabled]="!loginForm?.valid">{{'signIn' | translate}}</button>
+    </form>
+</div>
+
+<app-loading-dialog *ngIf="isLoading"></app-loading-dialog>

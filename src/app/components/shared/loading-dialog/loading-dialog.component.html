@@ -1,0 +1,13 @@
+<div class="wrap-screen-loading">
+    <div class="global-wrap-loading">
+        <span>
+            <span class="loading-message">{{loadingMessage}}</span>
+            <span class="ellipsis" *ngIf="isDisplayDots">
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+            </span>
+        </span>
+        <mat-spinner size="30px" width="30px" height="30px"></mat-spinner>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<h3>{{'contractsList' | translate}}:</h3>
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let contract of customerDetails?.contracts">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{contract.name}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{getStrType(contract.type)}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-packages-list [packages]="contract.packages"></app-packages-list>
+    </mat-expansion-panel>
+</mat-accordion>
+  

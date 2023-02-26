@@ -1,0 +1,6 @@
+.list-item{
+    height: unset !important;
+    &:not(:last-child){
+        border-bottom: 1px solid #ddd;
+    }
+}
